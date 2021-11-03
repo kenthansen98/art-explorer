@@ -9,7 +9,6 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const ArtPage: React.FC<Props> = ({ url }) => {
     const { data } = useSWR(url, fetcher)
-    console.log(url);
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mx-5">
