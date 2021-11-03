@@ -9,6 +9,7 @@ import { ArtType } from "..";
 import { useState } from "react";
 import ArtPage from "../../components/ArtPage";
 import { useRouter } from "next/dist/client/router";
+import Pagination from "../../components/Pagination";
 
 const Type: NextPage = ({
     type,
@@ -16,6 +17,10 @@ const Type: NextPage = ({
     const [pageIndex, setPageIndex] = useState(1);
     const router = useRouter();
     const { id } = router.query;
+
+    const paginate = (delta: number) => {
+        setPageIndex(pageIndex + delta);
+    };
 
     return (
         <Layout>
@@ -30,10 +35,7 @@ const Type: NextPage = ({
                     }&size=9&apikey=a2b50ae3-c012-44fd-ba12-615b396945ea`}
                 />
             </div>
-            <button onClick={() => setPageIndex(pageIndex - 1)}>
-                Previous
-            </button>
-            <button onClick={() => setPageIndex(pageIndex + 1)}>Next</button>
+            <Pagination paginate={paginate} />
         </Layout>
     );
 };
