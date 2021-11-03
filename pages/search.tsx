@@ -24,13 +24,13 @@ const Search: NextPage = () => {
                 </span>
             </h3>
             <ArtPage
-                url={`https://api.harvardartmuseums.org/object?q=${searchTerm}&page=${pageIndex}&size=9&apikey=a2b50ae3-c012-44fd-ba12-615b396945ea`}
+                url={`https://api.harvardartmuseums.org/object?q=${searchTerm}&page=${pageIndex}&size=9&apikey=${process.env.NEXT_PUBLIC_HARVARD_API_KEY}`}
             />
             <div style={{ display: "none" }}>
                 <ArtPage
                     url={`https://api.harvardartmuseums.org/object?q=${searchTerm}&page=${
                         pageIndex + 1
-                    }&size=9&apikey=a2b50ae3-c012-44fd-ba12-615b396945ea`}
+                    }&size=9&apikey=${process.env.NEXT_PUBLIC_HARVARD_API_KEY}`}
                 />
             </div>
             <Pagination paginate={paginate} />

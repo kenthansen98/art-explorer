@@ -22,7 +22,7 @@ const Home: NextPage = ({
 
 export const getStaticProps: GetStaticProps = async () => {
     const res = await fetch(
-        "https://api.harvardartmuseums.org/classification?sort=name&apikey=a2b50ae3-c012-44fd-ba12-615b396945ea&size=60"
+        `https://api.harvardartmuseums.org/classification?sort=name&apikey=${process.env.NEXT_PUBLIC_HARVARD_API_KEY}&size=60`
     );
     const data = await res.json();
     const types: ArtType[] = data.records;

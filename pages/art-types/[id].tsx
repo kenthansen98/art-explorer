@@ -26,13 +26,13 @@ const Type: NextPage = ({
         <Layout>
             <h1 className="font-bold text-3xl mb-6 mx-5">{type.name !== '(not assigned)' ? type.name : 'Not Assigned'}</h1>
             <ArtPage
-                url={`https://api.harvardartmuseums.org/object?classification=${id}&page=${pageIndex}&size=9&apikey=a2b50ae3-c012-44fd-ba12-615b396945ea`}
+                url={`https://api.harvardartmuseums.org/object?classification=${id}&page=${pageIndex}&size=9&apikey=${process.env.NEXT_PUBLIC_HARVARD_API_KEY}`}
             />
             <div style={{ display: "none" }}>
                 <ArtPage
                     url={`https://api.harvardartmuseums.org/object?classification=${id}&page=${
                         pageIndex + 1
-                    }&size=9&apikey=a2b50ae3-c012-44fd-ba12-615b396945ea`}
+                    }&size=9&apikey=${process.env.NEXT_PUBLIC_HARVARD_API_KEY}`}
                 />
             </div>
             <Pagination paginate={paginate} />
@@ -42,7 +42,7 @@ const Type: NextPage = ({
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     const res = await fetch(
-        `https://api.harvardartmuseums.org/classification/${params?.id}?apikey=a2b50ae3-c012-44fd-ba12-615b396945ea`
+        `https://api.harvardartmuseums.org/classification/${params?.id}?apikey=${process.env.NEXT_PUBLIC_HARVARD_API_KEY}`
     );
     const type: ArtType = await res.json();
 
@@ -55,7 +55,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
     const res = await fetch(
-        "https://api.harvardartmuseums.org/classification?apikey=a2b50ae3-c012-44fd-ba12-615b396945ea&size=60"
+        `https://api.harvardartmuseums.org/classification?apikey=${process.env.NEXT_PUBLIC_HARVARD_API_KEY}&size=60`
     );
     const data = await res.json();
     const types: ArtType[] = data.records;
