@@ -21,7 +21,7 @@ const Layout: React.FC = ({ children }) => {
                 <div className="self-center">
                     <Link href="/">
                         <a>
-                            <h1 className="text-5xl font-bold mt-14">
+                            <h1 className="text-5xl font-bold mt-14 transition hover:scale-105">
                                 Art Explorer
                             </h1>
                         </a>

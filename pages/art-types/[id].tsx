@@ -19,15 +19,15 @@ const Type: NextPage = ({
 
     return (
         <Layout>
-            <h1>{type.name}</h1>
+            <h1 className="font-bold text-3xl mb-6 mx-5">{type.name !== '(not assigned)' ? type.name : 'Not Assigned'}</h1>
             <ArtPage
-                url={`https://api.harvardartmuseums.org/object?classification=${id}&page=${pageIndex}&apikey=a2b50ae3-c012-44fd-ba12-615b396945ea`}
+                url={`https://api.harvardartmuseums.org/object?classification=${id}&page=${pageIndex}&size=9&apikey=a2b50ae3-c012-44fd-ba12-615b396945ea`}
             />
             <div style={{ display: "none" }}>
                 <ArtPage
                     url={`https://api.harvardartmuseums.org/object?classification=${id}&page=${
                         pageIndex + 1
-                    }&apikey=a2b50ae3-c012-44fd-ba12-615b396945ea`}
+                    }&size=9&apikey=a2b50ae3-c012-44fd-ba12-615b396945ea`}
                 />
             </div>
             <button onClick={() => setPageIndex(pageIndex - 1)}>

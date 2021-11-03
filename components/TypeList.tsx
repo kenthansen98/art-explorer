@@ -1,5 +1,5 @@
 import { ArtType } from "../pages";
-import Link from "next/link";
+import Type from "./Type";
 
 interface Props {
     types: ArtType[];
@@ -7,13 +7,9 @@ interface Props {
 
 const TypeList: React.FC<Props> = ({ types }) => {
     return (
-        <div className="grid grid-cols-3 gap-10 py-14">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 py-14 mx-5">
             {types.map((type, i) => (
-                <Link href={`art-types/${type.id}`} key={i}>
-                    <a>
-                        <div className="p-5 flex bg-white shadow-lg rounded-lg">{type.name !== "(not assigned)" ? type.name : "Not Assigned"}</div>
-                    </a>
-                </Link>
+                <Type type={type} key={i} />
             ))}
         </div>
     );
